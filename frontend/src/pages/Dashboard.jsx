@@ -15,7 +15,7 @@ const Dashboard = () => {
         const config = {
           headers: { Authorization: `Bearer ${user.token}` }
         };
-        const { data } = await axios.get(`/api/appointments/my-appointments`, config);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL || ''}/api/appointments/my-appointments`, config);
         setAppointments(data);
       } catch (error) {
         console.error('Error fetching appointments:', error);

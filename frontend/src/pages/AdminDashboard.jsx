@@ -13,7 +13,7 @@ const AdminDashboard = () => {
   const fetchAppointments = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.get(`/api/appointments`, config);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL || ''}/api/appointments`, config);
       setAppointments(data);
     } catch (error) {
       toast.error('Failed to load appointments');
@@ -31,7 +31,7 @@ const AdminDashboard = () => {
   const updateStatus = async (id, status) => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.put(`/api/appointments/${id}/status`, { status }, config);
+      await axios.put(`${import.meta.env.VITE_API_URL || ''}/api/appointments/${id}/status`, { status }, config);
       toast.success(`Appointment ${status} successfully!`);
       fetchAppointments(); // Refresh the list
     } catch (error) {

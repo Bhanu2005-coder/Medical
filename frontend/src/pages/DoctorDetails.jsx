@@ -19,7 +19,7 @@ const DoctorDetails = () => {
   useEffect(() => {
     const fetchDoctor = async () => {
       try {
-        const { data } = await axios.get(`/api/doctors/${id}`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL || ''}/api/doctors/${id}`);
         setDoctor(data);
       } catch (error) {
         toast.error('Failed to fetch doctor details');
@@ -48,7 +48,7 @@ const DoctorDetails = () => {
       const config = {
         headers: { Authorization: `Bearer ${user.token}` }
       };
-      await axios.post(`/api/appointments/book`, {
+      await axios.post(`${import.meta.env.VITE_API_URL || ''}/api/appointments/book`, {
         doctorId: id,
         date,
         time

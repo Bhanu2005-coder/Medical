@@ -11,7 +11,7 @@ const DoctorList = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const { data } = await axios.get(`/api/doctors`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL || ''}/api/doctors`);
         setDoctors(data);
       } catch (error) {
         console.error('Error fetching doctors:', error);
